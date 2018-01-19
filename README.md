@@ -1,9 +1,10 @@
 # Redux Auth Template
 
-This repo works with this backend here:
+This repo is built to work with the following backend: 
+https://github.com/maxwellbenton/painting-example-app-backend
+
+This repo is built on the following base repo from alexgriff:
+https://github.com/alexgriff/redux-auth-template
+and the original works with this backend here:
 https://github.com/alexgriff/painting-example-app-backend/tree/auth
-**Make Sure you are on the `auth` branch of the backend**
 
-This code is not meant to be copied and pasted wholesale. It should serve as an example to follow. You should build out your auth flow sequentially, using this repo like a code-along / guide.
-
-_Note: In the `withAuth` HOC a lot of the complexity in the conditionals stems from the case of when an authenticated user refreshes the page on a route they are authorized to see. If that was ignored, everything would be significantly simpler._

@@ -4,15 +4,6 @@ import UserCard from "./UserCard";
 class UserList extends React.Component {
   componentDidMount() {
     this.props.getUsers();
-    document.addEventListener("scroll", () => {
-      if (
-        this.userListComponent.scrollHeight -
-          document.documentElement.scrollTop <
-        1200
-      ) {
-        this.getUsers();
-      }
-    });
   }
 
   usersList = () =>
@@ -21,11 +12,19 @@ class UserList extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div
-        ref={div => (this.userListComponent = div)}
-        style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}
-      >
-        {this.usersList()}
+      <div>
+        <div
+          ref={div => (this.userListComponent = div)}
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr" }}
+        >
+          {this.usersList()}
+        </div>
+        <div
+          style={{ margin: "1em auto", textAlign: "center" }}
+          onClick={this.props.getUsers}
+        >
+          More Users!
+        </div>
       </div>
     );
   }

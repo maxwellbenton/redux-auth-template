@@ -7,15 +7,6 @@ class UserPage extends React.Component {
     console.log(this.props);
 
     this.props.getUserData(this.props.match.params.id);
-    document.addEventListener("scroll", () => {
-      if (
-        this.userPageComponent.scrollHeight -
-          document.documentElement.scrollTop <
-        900
-      ) {
-        this.getUsers();
-      }
-    });
   }
 
   userPosts = () =>

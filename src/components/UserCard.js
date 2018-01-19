@@ -6,7 +6,7 @@ const UserCard = props => {
     <div
       style={{
         border: "1px grey",
-        margin: "5px",
+        margin: "auto",
         background: "#eee",
         width: "300px",
         height: "370px"

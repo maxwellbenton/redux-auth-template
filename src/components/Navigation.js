@@ -17,11 +17,52 @@ const Navigation = props => {
   }
 
   return (
-    <div style={{ padding: "1em" }}>
-      <Link to="/" style={{ padding: "1em" }}>
-        Home
-      </Link>
-      {userState}
+    <div
+      style={{ padding: "1em", display: "grid", gridTemplateRows: "1fr 2fr" }}
+    >
+      <div>
+        <Link to="/" style={{ padding: "1em" }}>
+          Home
+        </Link>
+        {userState}
+      </div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: "2fr 1fr",
+          gridTemplateColumns: "auto",
+          textAlign: "center"
+        }}
+      >
+        <div style={{ fontSize: "500%" }}>Human Blog Site</div>
+        <div style={{ fontSize: "150%", margin: "5px" }}>
+          Welcome, Fellow Human
+        </div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+
+            fontSize: "125%",
+            margin: "10px"
+          }}
+        >
+          <Link to="/">
+            <div
+              style={{ textAlign: "center", width: "125px", margin: "auto" }}
+            >
+              Human Posts
+            </div>
+          </Link>
+          <Link to="/users">
+            <div
+              style={{ textAlign: "center", width: "125px", margin: "auto" }}
+            >
+              Human List
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

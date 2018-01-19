@@ -17,7 +17,9 @@ class App extends Component {
       username: null
     },
     posts: [],
+    loadingPosts: false,
     users: [],
+    loadingUsers: false,
     selectedPost: null,
     selectedUser: {
       id: null,
@@ -55,6 +57,7 @@ class App extends Component {
                 posts={this.state.posts}
                 logoutUser={this.logoutUser}
                 getPosts={this.getPosts}
+                loadingPosts={this.loadingPosts}
               />
             )}
           />
@@ -67,7 +70,11 @@ class App extends Component {
             exact
             path="/users"
             render={() => (
-              <UsersList users={this.state.users} getUsers={this.getUsers} />
+              <UsersList
+                users={this.state.users}
+                getUsers={this.getUsers}
+                loadingUsers={this.loadingUsers}
+              />
             )}
           />
           <Route
@@ -122,7 +129,9 @@ class App extends Component {
     fetch("http://localhost:3000/api/v1/posts")
       .then(res => res.json())
       .then(posts =>
-        this.setState(prevState => ({ posts: prevState.posts.concat(posts) }))
+        this.setState(prevState => ({
+          posts: prevState.posts.concat(posts)
+        }))
       );
   };
 
@@ -142,7 +151,9 @@ class App extends Component {
         this.props.history.push("/");
       })
       .then(users =>
-        this.setState(prevState => ({ users: prevState.users.concat(users) }))
+        this.setState(prevState => ({
+          users: prevState.users.concat(users)
+        }))
       );
   };
 }

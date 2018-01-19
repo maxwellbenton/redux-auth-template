@@ -1,7 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import * as actions from './actions';
+import React from "react";
+
+import { withRouter } from "react-router-dom";
 
 class Login extends React.Component {
   constructor() {
@@ -9,8 +8,8 @@ class Login extends React.Component {
     this.state = {
       error: false,
       fields: {
-        username: '',
-        password: ''
+        username: "",
+        password: ""
       }
     };
   }
@@ -23,7 +22,7 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { fields: { username, password } } = this.state;
-    this.props.loginUser(username, password, this.props.history);
+    this.props.loginUser({ username, password });
   };
 
   render() {
@@ -62,4 +61,4 @@ class Login extends React.Component {
   }
 }
 
-export default withRouter(connect(null, actions)(Login));
+export default withRouter(Login);

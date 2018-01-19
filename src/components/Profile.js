@@ -1,5 +1,4 @@
-import React from 'react';
-import withAuth from './hocs/withAuth';
+import React from "react";
 
 const Profile = props => {
   return (
@@ -9,4 +8,4 @@ const Profile = props => {
   );
 };
 
-export default withAuth(Profile);
+export default Profile;

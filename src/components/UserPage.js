@@ -4,7 +4,7 @@ import Comment from "./Comment";
 class UserPage extends React.Component {
   componentDidMount() {
     console.log(this.props.match.params.id);
-    console.log(this.props);
+    // console.log(this.props);
 
     this.props.getUserData(this.props.match.params.id);
   }

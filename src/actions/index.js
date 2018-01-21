@@ -10,7 +10,7 @@ export function getCurrentUser() {
 
 export function loginUser({ username, password }) {
   return dispatch => {
-    fetch(`http://localhost:3000/api/v1/auth/`, {
+    return fetch(`http://localhost:3000/api/v1/auth/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,6 +22,7 @@ export function loginUser({ username, password }) {
       .then(currentUser => {
         localStorage.setItem("jwt", currentUser.jwt);
         dispatch({ type: "SET_CURRENT_USER", currentUser });
+        return currentUser.id;
       });
   };
 }
@@ -56,4 +57,3 @@ export function getPosts() {
       .then(posts => dispatch({ type: "SET_POSTS", posts }));
   };
 }
-

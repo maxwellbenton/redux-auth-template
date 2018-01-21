@@ -1,7 +1,22 @@
-export function authReducer(
-  state = { currentUser: { id: null, username: null } },
-  action
-) {
+const authInitialState = {
+  currentUser: { id: null, username: null, posts: [], comments: [] }
+};
+const comments = { comments: [] };
+const postsInitialState = { posts: [] };
+const usersInitialState = {
+  users: [],
+  selectedUser: {
+    id: null,
+    username: null,
+    large_image: null,
+    small_image: null,
+    isbn: null,
+    posts: [],
+    comments: []
+  }
+};
+
+export function authReducer(state = authInitialState, action) {
   switch (action.type) {
     case "SET_CURRENT_USER":
       return { ...state, currentUser: action.currentUser };
@@ -10,7 +25,7 @@ export function authReducer(
   }
 }
 
-export function postsReducer(state = { posts: [] }, action) {
+export function postsReducer(state = postsInitialState, action) {
   switch (action.type) {
     case "SET_POSTS":
       return { ...state, posts: state.posts.concat(action.posts) };
@@ -19,21 +34,7 @@ export function postsReducer(state = { posts: [] }, action) {
   }
 }
 
-export function usersReducer(
-  state = {
-    users: [],
-    selectedUser: {
-      id: null,
-      username: null,
-      large_image: null,
-      small_image: null,
-      isbn: null,
-      posts: [],
-      comments: []
-    }
-  },
-  action
-) {
+export function usersReducer(state = usersInitialState, action) {
   switch (action.type) {
     case "SET_USERS":
       return { ...state, users: state.users.concat(action.users) };

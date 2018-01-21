@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navigation = props => {
-  console.log(props);
   let userState = (
     <Link to="/login" style={{ padding: "1em" }}>
       Login
@@ -25,6 +24,9 @@ const Navigation = props => {
           Home
         </Link>
         {userState}
+        <Link to="/lecture_page">
+          <div style={{ padding: "1em" }}>Normalized Data Info Page</div>
+        </Link>
       </div>
       <div
         style={{

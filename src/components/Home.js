@@ -1,6 +1,5 @@
 import React from "react";
 import PostCard from "./PostCard";
-import { Link } from "react-router-dom";
 class Home extends React.Component {
   posts = () =>
     this.props.posts.map(post => <PostCard key={post.id} {...post} />);

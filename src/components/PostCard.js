@@ -1,9 +1,9 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-import Comment from "./Comment";
+// import Comment from "./Comment";
 const PostCard = props => {
-  const comments = () =>
-    props.comments.map(comment => <Comment key={comment.id} {...comment} />);
+  // const comments = () =>
+  //   props.comments.map(comment => <Comment key={comment.id} {...comment} />);
 
   return (
     <div style={{ border: "1px grey", margin: "5px" }}>
@@ -23,14 +23,19 @@ const PostCard = props => {
             alt={props.user.small_image}
           />
         </Link>
-        <div style={{ fontSize: "125%", overflow: "hidden" }}>
-          {props.title}
+        <Link to={`/users/${props.user.id}`}>
+          <div style={{ fontSize: "125%", overflow: "hidden" }}>
+            {props.title}
+          </div>
+        </Link>
+      </div>
+      <Link to={`/users/${props.user.id}`}>
+        <div>
+          <p>{props.content}</p>
         </div>
-      </div>
-      <div>
-        <p>{props.content}</p>
-      </div>
-      <div style={{ display: "grid" }}>{comments()}</div>
+
+        <div style={{ display: "grid" }}>{props.comments.length} replies</div>
+      </Link>
     </div>
   );
 };

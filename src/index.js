@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import "semantic-ui-css/semantic.min.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import { authReducer, postsReducer, usersReducer } from "./reducers";
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
+console.log(store.getState());
 const Root = () => {
   return (
     <Provider store={store}>

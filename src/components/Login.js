@@ -22,7 +22,9 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const { fields: { username, password } } = this.state;
-    this.props.loginUser({ username, password });
+    this.props
+      .loginUser({ username, password })
+      .then(id => this.props.history.push(`/users/${id}`));
   };
 
   render() {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Switch, Route, withRouter, Redirect } from "react-router-dom";
+import { Switch, Route, withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Login from "./components/Login";
 import Home from "./components/Home";
@@ -28,8 +28,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
-
     return (
       <div className="App">
         <Navigation
@@ -52,7 +50,10 @@ class App extends Component {
             path="/login"
             render={() => <Login loginUser={this.props.loginUser} />}
           />
-          <Route path="/profile" component={Profile} />
+          <Route
+            path="/profile"
+            render={props => <Profile user={this.props.currentUser} />}
+          />
           <Route
             exact
             path="/users"

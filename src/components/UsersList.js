@@ -21,7 +21,9 @@ class UserList extends React.Component {
             textAlign: "center"
           }}
         >
-          <div style={{ fontSize: "500%" }}>Human Blog Site</div>
+          <div style={{ fontSize: "500%", lineHeight: "1em" }}>
+            Human Blog Site
+          </div>
           <div style={{ fontSize: "150%", margin: "5px" }}>
             Welcome, Fellow Human
           </div>

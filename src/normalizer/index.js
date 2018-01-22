@@ -4,6 +4,7 @@ const normalize = (data, parent = "", descendants) => {
   var entities = {};
 
   if (Array.isArray(data) && data[0]) {
+    debugger;
     entities[parent] = {};
 
     for (let i = 0; i < data.length; i++) {
@@ -84,7 +85,7 @@ const normalize = (data, parent = "", descendants) => {
       }
     }
   }
-
+  debugger;
   return entities;
 };
 

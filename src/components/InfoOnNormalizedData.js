@@ -145,7 +145,6 @@ class NormalizedDataInfo extends React.Component {
             </div>
           </div>
         </div>
-        <div>Performance info</div>
       </div>
     );
   }

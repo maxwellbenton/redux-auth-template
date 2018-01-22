@@ -35,7 +35,7 @@ const PostCard = props => {
           <p>{props.content}</p>
         </div>
 
-        <div style={{ display: "grid" }}>{props.comments.length} replies</div>
+        <div style={{ display: "grid" }}>{props.comments.length}</div>
       </Link>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-// import Comment from "./Comment";
+import { connect } from "react-redux";
+
 const PostCard = props => {
   // const comments = () =>
   //   props.comments.map(comment => <Comment key={comment.id} {...comment} />);
@@ -16,20 +17,20 @@ const PostCard = props => {
           background: "#CCF"
         }}
       >
-        <Link to={`/users/${props.user.id}`}>
+        <Link to={`/users/${props.user}`}>
           <img
             style={{ float: "left" }}
-            src={props.user.small_image}
-            alt={props.user.small_image}
+            src={props.small_image}
+            alt={props.small_image}
           />
         </Link>
-        <Link to={`/users/${props.user.id}`} style={{ overflow: "hidden" }}>
+        <Link to={`/users/${props.user}`} style={{ overflow: "hidden" }}>
           <div style={{ fontSize: "125%", overflow: "hidden" }}>
             {props.title}
           </div>
         </Link>
       </div>
-      <Link to={`/users/${props.user.id}`}>
+      <Link to={`/users/${props.user}`}>
         <div>
           <p>{props.content}</p>
         </div>
@@ -40,4 +41,10 @@ const PostCard = props => {
   );
 };
 
-export default withRouter(PostCard);
+export default withRouter(
+  connect(({ authReducer, usersReducer, dataReducer }) => ({
+    ...authReducer,
+    ...usersReducer,
+    ...dataReducer
+  }))(PostCard)
+);

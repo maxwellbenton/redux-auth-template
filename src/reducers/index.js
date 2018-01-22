@@ -1,19 +1,15 @@
 const authInitialState = {
-  currentUser: { id: null, username: null, posts: [], comments: [] }
+  currentUser: null
 };
-const comments = { comments: [] };
-const postsInitialState = { posts: [] };
+
+const dataInitialState = {
+  users: {},
+  posts: {},
+  comments: {}
+};
+
 const usersInitialState = {
-  users: [],
-  selectedUser: {
-    id: null,
-    username: null,
-    large_image: null,
-    small_image: null,
-    isbn: null,
-    posts: [],
-    comments: []
-  }
+  selectedUser: null
 };
 
 export function authReducer(state = authInitialState, action) {
@@ -25,10 +21,29 @@ export function authReducer(state = authInitialState, action) {
   }
 }
 
-export function postsReducer(state = postsInitialState, action) {
+export function dataReducer(state = dataInitialState, action) {
   switch (action.type) {
-    case "SET_POSTS":
-      return { ...state, posts: state.posts.concat(action.posts) };
+    case "SET_CURRENT_USER":
+      return {
+        ...state,
+        users: { ...state.users, ...action.users },
+        posts: { ...state.posts, ...action.posts },
+        comments: { ...state.comments, ...action.comments }
+      };
+    case "SET_SELECTED_USER":
+      return {
+        ...state,
+        users: { ...state.users, ...action.users },
+        posts: { ...state.posts, ...action.posts },
+        comments: { ...state.comments, ...action.comments }
+      };
+    case "SET_DATA":
+      return {
+        ...state,
+        posts: { ...state.posts, ...action.posts },
+        users: { ...state.users, ...action.users },
+        comments: { ...state.comments, ...action.comments }
+      };
     default:
       return state;
   }
@@ -36,8 +51,6 @@ export function postsReducer(state = postsInitialState, action) {
 
 export function usersReducer(state = usersInitialState, action) {
   switch (action.type) {
-    case "SET_USERS":
-      return { ...state, users: state.users.concat(action.users) };
     case "SET_SELECTED_USER":
       return { ...state, selectedUser: action.selectedUser };
     default:

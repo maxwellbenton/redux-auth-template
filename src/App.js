@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Navigation from "./components/Navigation";
-import Profile from "./components/Profile";
+
 import UserPage from "./components/UserPage";
 import UsersList from "./components/UsersList";
 import PostsList from "./components/PostsList";
@@ -31,10 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navigation
-          id={this.props.currentUser.id}
-          username={this.props.currentUser.username}
-        />
+        <Navigation id={this.props.currentUser} users={this.props.users} />
         <Switch>
           <Route
             exact
@@ -51,10 +48,7 @@ class App extends Component {
             path="/login"
             render={() => <Login loginUser={this.props.loginUser} />}
           />
-          <Route
-            path="/profile"
-            render={props => <Profile user={this.props.currentUser} />}
-          />
+          <Route path="/profile" render={props => <UserPage {...props} />} />
           <Route
             exact
             path="/users"
@@ -65,16 +59,7 @@ class App extends Component {
               />
             )}
           />
-          <Route
-            path="/users/:id"
-            render={props => (
-              <UserPage
-                {...props}
-                getUserData={this.props.getUserData}
-                user={this.props.selectedUser}
-              />
-            )}
-          />
+          <Route path="/users/:id" render={props => <UserPage {...props} />} />
           <Route exact path="/posts" component={PostsList} />
           <Route path="/posts/:id" render={props => <PostPage {...props} />} />
           <Route
@@ -92,10 +77,10 @@ class App extends Component {
 
 export default withRouter(
   connect(
-    ({ authReducer, usersReducer, postsReducer }) => ({
+    ({ authReducer, usersReducer, dataReducer }) => ({
       ...authReducer,
       ...usersReducer,
-      ...postsReducer
+      ...dataReducer
     }),
     {
       getCurrentUser,

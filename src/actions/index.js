@@ -1,10 +1,17 @@
+import normalize from "../normalizer";
+
 export function getCurrentUser() {
   return dispatch => {
     fetch("http://localhost:3000/api/v1/current_user", {
       headers: { Authorization: localStorage.getItem("jwt") }
     })
       .then(res => res.json())
-      .then(currentUser => dispatch({ type: "SET_CURRENT_USER", currentUser }));
+      .then(currentUser => {
+        let data = normalize([currentUser], "users", ["posts", "comments"]);
+        currentUser = currentUser.id;
+
+        dispatch({ type: "SET_CURRENT_USER", currentUser, ...data });
+      });
   };
 }
 
@@ -36,9 +43,12 @@ export function getUserData(userId) {
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/users/${userId}`)
       .then(res => res.json())
-      .then(selectedUser =>
-        dispatch({ type: "SET_SELECTED_USER", selectedUser })
-      );
+      .then(selectedUser => {
+        let data = normalize([selectedUser], "users", ["posts", "comments"]);
+        selectedUser = selectedUser.id;
+
+        dispatch({ type: "SET_SELECTED_USER", selectedUser, ...data });
+      });
   };
 }
 
@@ -46,7 +56,11 @@ export function getUsers() {
   return dispatch => {
     fetch(`http://localhost:3000/api/v1/users`)
       .then(res => res.json())
-      .then(users => dispatch({ type: "SET_USERS", users }));
+      .then(users => {
+        let data = normalize(users, "users", ["posts", "comments"]);
+
+        dispatch({ type: "SET_DATA", ...data });
+      });
   };
 }
 
@@ -54,6 +68,10 @@ export function getPosts() {
   return dispatch => {
     fetch("http://localhost:3000/api/v1/posts")
       .then(res => res.json())
-      .then(posts => dispatch({ type: "SET_POSTS", posts }));
+      .then(posts => {
+        let data = normalize(posts, "posts", ["users", "comments"]);
+
+        dispatch({ type: "SET_DATA", ...data });
+      });
   };
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { connect } from "react-redux";
 const Navigation = props => {
   let userState = (
     <Link to="/login" style={{ padding: "1em" }}>
@@ -10,7 +10,7 @@ const Navigation = props => {
   if (!!props.id) {
     userState = (
       <Link to={`/users/${props.id}`} style={{ padding: "1em" }}>
-        {props.username}
+        {props.users[props.id].username}
       </Link>
     );
   }
@@ -32,7 +32,12 @@ const Navigation = props => {
   );
 };
 
-export default Navigation;
+export default connect(({ authReducer, usersReducer, dataReducer }) => ({
+  ...authReducer,
+  ...dataReducer
+}))(Navigation);
+
+// export default Navigation;
 // <li>
 //   {!!props.id ? (
 //     <a

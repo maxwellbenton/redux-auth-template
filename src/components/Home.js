@@ -1,11 +1,20 @@
 import React from "react";
 import PostCard from "./PostCard";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 class Home extends React.Component {
   posts = () =>
-    this.props.posts.map(post => <PostCard key={post.id} {...post} />);
+    Object.keys(this.props.posts).map(post_id => (
+      <PostCard
+        key={post_id}
+        {...this.props.users[this.props.posts[post_id].user]}
+        user={this.props.posts[post_id].user}
+        {...this.props.posts[post_id]}
+      />
+    ));
 
   render() {
+    // console.log(this.props);
     return (
       <div ref={div => (this.homeComponent = div)}>
         <div
@@ -16,7 +25,9 @@ class Home extends React.Component {
             textAlign: "center"
           }}
         >
-          <div style={{ fontSize: "500%" }}>Human Blog Site</div>
+          <div style={{ fontSize: "500%", lineHeight: "1em" }}>
+            Human Blog Site
+          </div>
           <div style={{ fontSize: "150%", margin: "5px" }}>
             Welcome, Fellow Human
           </div>
@@ -59,4 +70,8 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default connect(({ authReducer, usersReducer, dataReducer }) => ({
+  ...authReducer,
+  ...usersReducer,
+  ...dataReducer
+}))(Home);

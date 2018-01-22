@@ -7,10 +7,11 @@ class UserList extends React.Component {
   }
 
   usersList = () =>
-    this.props.users.map(user => <UserCard key={user.id} {...user} />);
+    Object.keys(this.props.users).map(user => (
+      <UserCard key={user} {...this.props.users[user]} />
+    ));
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div
@@ -21,7 +22,9 @@ class UserList extends React.Component {
             textAlign: "center"
           }}
         >
-          <div style={{ fontSize: "500%" }}>Human Blog Site</div>
+          <div style={{ fontSize: "500%", lineHeight: "1em" }}>
+            Human Blog Site
+          </div>
           <div style={{ fontSize: "150%", margin: "5px" }}>
             Welcome, Fellow Human
           </div>

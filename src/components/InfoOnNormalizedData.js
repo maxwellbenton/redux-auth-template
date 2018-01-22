@@ -112,6 +112,7 @@ class NormalizedDataInfo extends React.Component {
                   "De-nests" data, preventing O(n^2), double iteration
                   situations.
                 </li>
+                <li>Works very well with redux.</li>
               </ul>
             </div>
             <div>
@@ -140,6 +141,11 @@ class NormalizedDataInfo extends React.Component {
                   on the frontend when using a SQL backend. In NoSQL backends,
                   you can shape your data however you please and can design your
                   data to be normalized from the beginning.
+                </li>
+                <li>
+                  Makes passing down props from parent components more
+                  complicated. Using Redux to access state directly resolves
+                  this.
                 </li>
               </ul>
             </div>

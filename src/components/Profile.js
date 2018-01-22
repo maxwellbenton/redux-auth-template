@@ -2,12 +2,11 @@ import React from "react";
 import PostCard from "./PostCard";
 import Comment from "./Comment";
 class Profile extends React.Component {
-  componentDidMount() {
-    console.log(this.props.match.params.id);
-    // console.log(this.props);
-
-    this.props.getUserData(this.props.match.params.id);
-  }
+  // componentDidMount() {
+  //   console.log(this.props.match.params.id);
+  //   // console.log(this.props);
+  //   this.props.getUserData(this.props.match.params.id);
+  // }
 
   userPosts = () =>
     this.props.user.posts.map(post => <PostCard key={post.id} {...post} />);

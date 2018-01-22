@@ -23,7 +23,7 @@ const PostCard = props => {
             alt={props.user.small_image}
           />
         </Link>
-        <Link to={`/users/${props.user.id}`}>
+        <Link to={`/users/${props.user.id}`} style={{ overflow: "hidden" }}>
           <div style={{ fontSize: "125%", overflow: "hidden" }}>
             {props.title}
           </div>

@@ -9,6 +9,7 @@ import UserPage from "./components/UserPage";
 import UsersList from "./components/UsersList";
 import PostsList from "./components/PostsList";
 import PostPage from "./components/PostPage";
+import InfoOnNormalizedData from "./components/InfoOnNormalizedData";
 import {
   getCurrentUser,
   loginUser,
@@ -76,6 +77,12 @@ class App extends Component {
           />
           <Route exact path="/posts" component={PostsList} />
           <Route path="/posts/:id" render={props => <PostPage {...props} />} />
+          <Route
+            path="/lecture_page"
+            render={props => (
+              <InfoOnNormalizedData {...props} {...this.props} />
+            )}
+          />
           <Redirect to="/" />
         </Switch>
       </div>

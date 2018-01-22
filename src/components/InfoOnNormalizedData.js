@@ -91,7 +91,7 @@ class NormalizedDataInfo extends React.Component {
           >
             <div>
               <div style={{ fontSize: "150%" }}>Pros</div>
-              <ul style={{ textAlign: "justify" }}>
+              <ul style={{ textAlign: "justify", margin: "5px" }}>
                 <li>
                   Provides significant performance boosts on certain actions
                   when you are dealing with a lot of related, nested data
@@ -121,7 +121,7 @@ class NormalizedDataInfo extends React.Component {
             </div>
             <div>
               <div style={{ fontSize: "150%" }}>Cons</div>
-              <ul style={{ textAlign: "justify" }}>
+              <ul style={{ textAlign: "justify", margin: "5px" }}>
                 <li>
                   Can signifigantly change the structure of your data and all
                   functions related to it

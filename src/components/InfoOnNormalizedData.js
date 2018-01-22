@@ -27,9 +27,13 @@ class NormalizedDataInfo extends React.Component {
           </div>
           <div style={{ padding: "0 100px", textAlign: "justify" }}>
             Data normalization is a concept that has been around for many
-            decades. It is fundamental in the design of databases, such as
-            PostgreSQL, that use tables and columns to maintain data relations
-            and integrity.
+            decades. It is fundamental in the design of databases that use
+            tables and columns to maintain data relations and integrity, such as
+            PostgreSQL. One example of normalized data is how we store
+            relationships on our backend models - a post, for instance, knows
+            when user it belongs to. If I edit the user, the post, doesn't
+            change, it still references the same user, so post.user should
+            return the correctly updated data.
           </div>
           <div style={{ margin: "40px", fontSize: "250%", lineHeight: "1em" }}>
             What Does it Mean to Normalize Frontend Data?
@@ -112,6 +116,7 @@ class NormalizedDataInfo extends React.Component {
                   "De-nests" data, preventing O(n^2), double iteration
                   situations.
                 </li>
+                <li>Works very well with redux.</li>
               </ul>
             </div>
             <div>
@@ -140,6 +145,11 @@ class NormalizedDataInfo extends React.Component {
                   on the frontend when using a SQL backend. In NoSQL backends,
                   you can shape your data however you please and can design your
                   data to be normalized from the beginning.
+                </li>
+                <li>
+                  Makes passing down props from parent components more
+                  complicated. Using Redux to access state directly resolves
+                  this.
                 </li>
               </ul>
             </div>

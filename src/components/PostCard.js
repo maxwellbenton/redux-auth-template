@@ -5,6 +5,8 @@ const PostCard = props => {
   // const comments = () =>
   //   props.comments.map(comment => <Comment key={comment.id} {...comment} />);
 
+  let userdata = props.user ? { ...props.user } : { ...props };
+
   return (
     <div style={{ border: "1px grey", margin: "5px" }}>
       <div
@@ -16,25 +18,25 @@ const PostCard = props => {
           background: "#CCF"
         }}
       >
-        <Link to={`/users/${props.user.id}`}>
+        <Link to={`/users/${props.id}`}>
           <img
             style={{ float: "left" }}
-            src={props.user.small_image}
-            alt={props.user.small_image}
+            src={userdata.small_image}
+            alt={userdata.small_image}
           />
         </Link>
-        <Link to={`/users/${props.user.id}`} style={{ overflow: "hidden" }}>
+        <Link to={`/users/${userdata.id}`} style={{ overflow: "hidden" }}>
           <div style={{ fontSize: "125%", overflow: "hidden" }}>
             {props.title}
           </div>
         </Link>
       </div>
-      <Link to={`/users/${props.user.id}`}>
+      <Link to={`/users/${userdata.id}`}>
         <div>
           <p>{props.content}</p>
         </div>
 
-        <div style={{ display: "grid" }}>{props.comments.length} replies</div>
+        <div style={{ display: "grid" }}>{props.comments.length}</div>
       </Link>
     </div>
   );
